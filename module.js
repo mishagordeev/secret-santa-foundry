@@ -1,19 +1,18 @@
 Hooks.once('ready', async function () {
-    // Получаем компедиум
     const pack = game.packs.get('secret-santa-foundry.secret-santa-macros');
+    
     if (!pack) {
-      console.error('Не удалось найти компедиум "secret-santa-macros".');
+      console.error('Компедиум не найден.');
       return;
     }
   
-    // Проверяем, есть ли уже данные в компедиуме
-    const existingMacros = await pack.getDocuments();
-    if (existingMacros.length > 0) {
-      console.log('Компедиум уже содержит данные, добавление пропущено.');
-      return;
-    }
+    console.log('Компедиум найден:', pack);
   
-    // Данные макросов
+    // Загружаем документы из компедиума
+    const documents = await pack.getDocuments();
+    console.log('Существующие документы:', documents);
+  
+    // Добавляем новые макросы в компедиум
     const macrosData = [
       {
         name: 'Test Macro',
@@ -29,8 +28,10 @@ Hooks.once('ready', async function () {
       }
     ];
   
-    // Импортируем данные в компедиум
-    await pack.importDocuments(macrosData);
-    console.log('Макросы успешно добавлены в компедиум.');
+    // Создаём новые документы и добавляем их в компедиум
+    for (const macroData of macrosData) {
+      const macro = await Macro.create(macroData, { pack: pack.collection });
+      console.log('Макрос добавлен:', macro);
+    }
   });
   
