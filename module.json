@@ -4,8 +4,12 @@
     "description": "Тайный Санта для Fonudry VTT.",
     "version": "1.0.0",
     "author": "mishagordeev",
-    "minimumCoreVersion": "11",
-    "compatibleCoreVersion": "11",
+    "compatibility": {
+      "core": ">=12.0.0"
+    },
+    "scripts": [
+      "module.js"
+    ],
     "packs": [
       {
         "name": "secret-santa-macros",
