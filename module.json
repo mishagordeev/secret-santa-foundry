@@ -8,14 +8,11 @@
     "compatibleCoreVersion": "11",
     "packs": [
       {
-        "name": "macros",
-        "label": "Macro Compendium",
+        "name": "secret-santa-macros",
+        "label": "Тайный Санта",
         "path": "packs/macros.db",
         "type": "Macro"
       }
-    ],
-    "scripts": [
-      "scripts/setup.js"
     ],
     "url": "https://github.com/mishagordeev/secret-santa-foundry",
     "manifest": "https://raw.githubusercontent.com/mishagordeev/secret-santa-foundry/refs/heads/main/module.json",
