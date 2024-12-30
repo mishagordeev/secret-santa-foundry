@@ -1,0 +1,20 @@
+{
+    "name": "secret-santa-foundry",
+    "title": "Secret Santa Module",
+    "description": "Тайный Санта для Fonudry VTT.",
+    "version": "1.0.0",
+    "author": "mishagordeev",
+    "minimumCoreVersion": "11",
+    "compatibleCoreVersion": "11",
+    "packs": [
+      {
+        "name": "macros",
+        "label": "Macro Compendium",
+        "path": "packs/macros.db",
+        "type": "Macro"
+      }
+    ],
+    "scripts": [
+      "scripts/setup.js"
+    ]
+  }
