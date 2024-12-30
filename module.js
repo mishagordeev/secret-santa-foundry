@@ -1,6 +1,11 @@
-Hooks.on('init', async function() {
+Hooks.once('init', async function() {
+    const macroCompendium = game.packs.get('secret-santa-foundry.secret-santa-macros');  // Укажите правильный путь к вашему компедиуму
     console.log("Module loaded! Добавляем макросы...");
   
+    if (!macroCompendium) {
+        console.error('Не удалось найти компедиум для макросов.');
+        return;
+      }
     // Данные для макроса
     const macrosData = [
       {
@@ -17,7 +22,7 @@ Hooks.on('init', async function() {
       }
     ];
 
-    const macroCompendium = game.packs.get('secret-santa-foundry.secret-santa-macros');  // Укажите правильный путь к вашему компедиуму
+
 
     // Импортируем макросы в компедиум
     await macroCompendium.importDocuments(macrosData);
