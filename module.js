@@ -1,7 +1,7 @@
 Hooks.once("ready", async () => {
     console.log("Macro Compendium Module | Готово!");
 
-    const pack = game.packs.get("macro-compendium-module.macros");
+    const pack = game.packs.get("secret-santa-macros.macros");
     if (!pack) {
         console.error("Macro Compendium Module | Компедиум не найден.");
         return;
