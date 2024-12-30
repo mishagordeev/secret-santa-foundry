@@ -16,8 +16,5 @@ Hooks.on('init', async function() {
         flags: { core: { "exported": true } }
       }
     ];
-  
-    const macroCompendium = game.packs.get('secret-santa-foundry.secret-santa-macros');   
-    await macroCompendium.importDocuments(macrosData);
-  });
+});
   
