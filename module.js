@@ -1,32 +1,36 @@
-console.log('Санта');
-Hooks.once('init', async function() {
-    console.log('Модуль инициализирован');
-    const macroCompendium = game.packs.get('secret-santa-foundry.secret-santa-macros');  // Укажите правильный путь к вашему компедиуму
-    console.log("Module loaded! Добавляем макросы...");
+Hooks.once('ready', async function () {
+    // Получаем компедиум
+    const pack = game.packs.get('secret-santa-foundry.secret-santa-macros');
+    if (!pack) {
+      console.error('Не удалось найти компедиум "secret-santa-macros".');
+      return;
+    }
   
-    if (!macroCompendium) {
-        console.error('Не удалось найти компедиум для макросов.');
-        return;
-      }
-    // Данные для макроса
+    // Проверяем, есть ли уже данные в компедиуме
+    const existingMacros = await pack.getDocuments();
+    if (existingMacros.length > 0) {
+      console.log('Компедиум уже содержит данные, добавление пропущено.');
+      return;
+    }
+  
+    // Данные макросов
     const macrosData = [
       {
-        name: "Test Macro",
-        type: "script",
-        command: `game.chatMessage({content: 'Hello, world!'})`,
-        flags: { core: { "exported": true } }
+        name: 'Test Macro',
+        type: 'script',
+        command: `console.log('Hello, Secret Santa!');`,
+        flags: { core: { exported: true } }
       },
       {
-        name: "Another Macro",
-        type: "script",
-        command: `game.chatMessage({content: 'This is another macro!'})`,
-        flags: { core: { "exported": true } }
+        name: 'Another Macro',
+        type: 'script',
+        command: `game.chatMessage({content: 'This is another test macro!'});`,
+        flags: { core: { exported: true } }
       }
     ];
-
-
-
-    // Импортируем макросы в компедиум
-    await macroCompendium.importDocuments(macrosData);
-});
+  
+    // Импортируем данные в компедиум
+    await pack.importDocuments(macrosData);
+    console.log('Макросы успешно добавлены в компедиум.');
+  });
   
