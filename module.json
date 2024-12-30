@@ -14,7 +14,7 @@
         "type": "Macro"
       }
     ],
-    "scripts": [
-      "scripts/setup.js"
-    ]
+    "url": "https://github.com/mishagordeev/secret-santa-foundry",
+    "manifest": "https://raw.githubusercontent.com/mishagordeev/secret-santa-foundry/refs/heads/main/module.json",
+    "download": "https://github.com/mishagordeev/secret-santa-foundry/archive/refs/heads/main.zip"  
   }
