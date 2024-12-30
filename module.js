@@ -1,4 +1,6 @@
+console.log('Санта');
 Hooks.once('init', async function() {
+    console.log('Модуль инициализирован');
     const macroCompendium = game.packs.get('secret-santa-foundry.secret-santa-macros');  // Укажите правильный путь к вашему компедиуму
     console.log("Module loaded! Добавляем макросы...");
   
