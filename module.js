@@ -18,12 +18,35 @@ Hooks.once('ready', async function () {
         name: 'Test Macro',
         type: 'script',
         command: `console.log('Hello, Secret Santa!');`,
+        img: 'icons/svg/dice-target.svg',
         flags: { core: { exported: true } }
       },
       {
-        name: 'Another Macro',
+        name: 'Показать подарки',
         type: 'script',
-        command: `game.chatMessage({content: 'This is another test macro!'});`,
+        command: 
+        `
+        let gifts = [];
+
+        game.users.forEach(user => {
+            let data = user.getFlag("world", "savedGiftData");
+            if (data) {
+              gifts.push(data);
+            }
+        });
+
+        for (let i = gifts.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [gifts[i], gifts[j]] = [gifts[j], gifts[i]];
+        }
+
+        gifts.forEach(element => {
+          ChatMessage.create({
+              content: element,
+              speaker: { alias: "Gamemaster" },  
+          });
+        });
+        `,
         flags: { core: { exported: true } }
       }
     ];
