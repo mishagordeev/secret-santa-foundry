@@ -47,7 +47,11 @@ Hooks.once('ready', async function () {
           });
         });
         `,
-        flags: { core: { exported: true } }
+        flags: { core: { exported: true } },
+        ownership: {
+          default: 0,
+          [game.users.find(u => u.isGM)._id]: 3
+        }
       }
     ];
   
